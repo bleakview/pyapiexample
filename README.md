@@ -1,5 +1,7 @@
 [![Python application](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml)
 
+[![publish to docker registry](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml/badge.svg)](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml)
+
 # PyApiExample
 
 Hi ! This is an example written in Python 3 for a start point on how to write a FastAPI API with SQLAlchemy.
