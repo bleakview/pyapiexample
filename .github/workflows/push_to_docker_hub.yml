@@ -1,4 +1,4 @@
-name: This file will publish to docker container registry
+name: publish to docker registry
 on: [push] # When pushing to any branch then run this action
 
 env:
