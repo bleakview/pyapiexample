@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  python:
+    image: bleakview/pyapiexample:1.0.1
+    container_name: pyapiexample
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      - DB_CONNECTION_URL=mysql+aiomysql://root:secret@mysqldb:3306/book
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    networks:
+      - pyapiexample_network
+
+  mysqldb:
+    image: mysql:8.0.29-debian
+    container_name: mysqlforpyexampleapi
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: book
+    networks:
+      - pyapiexample_network
+    healthcheck:
+      test: "mysql -uroot -psecret book -e 'select 1'"
+      interval: 10s
+      timeout: 2s
+      retries: 20
+networks:
+  pyapiexample_network:
+    driver: bridge
