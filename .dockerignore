@@ -1,5 +1,7 @@
-node_modules
+__pycache__
+.pytest_cache
 docker-compose.yml
 Dockerfile
-__snapshots__
 .github
+*.db
+README.md
