@@ -13,4 +13,4 @@ mysql+aiomysql://\<username>:\<password>@\<mysql host>:\<mysql port>/\<mysql dat
 The environment variable is DB_CONNECTION_URL.
 
 On very change code test will be run and a new docker image will bu pushed to
-[https://hub.docker.com/repository/docker/bleakview/pyapiexample](https://hub.docker.com/repository/docker/bleakview/pyapiexample).
+[https://hub.docker.com/r/bleakview/pyapiexample](https://hub.docker.com/r/bleakview/pyapiexample).
