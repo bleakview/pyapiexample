@@ -15,14 +15,11 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Get current date # get the date of the build
         id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
-      - name: Get the version # get the version of the build
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}        
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"     
       - name: Build the Docker image # build The image with version tag
-        run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.get_version.outputs.VERSION }}-b${{ steps.date.outputs.date }}
+        run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ github.event.release.tag_name }}-b${{ steps.date.outputs.date }}
       - name: Docker Push # push The image to the docker hub with version tag
-        run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.get_version.outputs.VERSION }}-b${{ steps.date.outputs.date }}
+        run: docker push $DOCKER_USER/$REPO_NAME:${{ github.event.release.tag_name }}-b${{ steps.date.outputs.date }}
       - name: Build the Docker image # build The image with latest tag
         run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME    
       - name: Docker Push # push The image to the docker hub with latest tag
