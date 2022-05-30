@@ -1,4 +1,4 @@
-[![Python application](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml)   [![publish to docker registry](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml/badge.svg)](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml)
+[![Python CI](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/bleakview/pyapiexample/actions/workflows/python-app.yml)   [![publish to docker registry](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml/badge.svg)](https://github.com/bleakview/pyapiexample/actions/workflows/push_to_docker_hub.yml)
 
 # PyApiExample
 
