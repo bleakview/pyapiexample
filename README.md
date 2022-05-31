@@ -5,7 +5,7 @@
 <img src="https://bleakview.github.io/git/pyapiexample/images/pyapiexample.jpg" alt="swagger example image" width="800"/>
 
   
-This is an example written in Python for a start point on how to write a FastAPI API with SQLAlchemy. 
+This is an example written in Python for a start point on how to write a FastAPI with SQLAlchemy. 
 It supports python testing and you can test api with swagger via 
 ```
 http://localhost:8000/docs/
