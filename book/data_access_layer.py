@@ -13,7 +13,10 @@ class DataAccessLayer():
     def __init__(self, db_session: Session):
         self.db_session = db_session
 
-    async def create_book(self, name: str, author: str,   release_year: int, isbn: str, id: str = None):
+    async def create_book(self,
+                          name: str, author: str,
+                          release_year: int,
+                          isbn: str, id: str = None):
         new_book = BookDB(id=id, name=name, author=author,
                           release_year=release_year, isbn=isbn)
         self.db_session.add(new_book)
@@ -26,10 +29,15 @@ class DataAccessLayer():
         return q.scalars().all()
 
     async def get_book(self, book_id: str) -> List[BookDB]:
-        q = await self.db_session.execute(select(BookDB).where(BookDB.id == book_id))
+        q = await self.db_session.execute(select(BookDB)
+                                          .where(BookDB.id == book_id))
         return q.scalars().one()
 
-    async def update_book(self, book_id: int, name: Optional[str], author: Optional[str], release_year: Optional[int], isbn: Optional[str]):
+    async def update_book(self,
+                          book_id: int,
+                          name: Optional[str],
+                          author: Optional[str],
+                          release_year: Optional[int], isbn: Optional[str]):
         q = update(BookDB).where(BookDB.id == book_id)
         if name:
             q = q.values(name=name)
