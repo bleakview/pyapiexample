@@ -18,6 +18,8 @@ class DataAccessLayer():
                           release_year=release_year, isbn=isbn)
         self.db_session.add(new_book)
         await self.db_session.flush()
+        await self.db_session.refresh(new_book)
+        return new_book
 
     async def get_all_books(self) -> List[BookDB]:
         q = await self.db_session.execute(select(BookDB).order_by(BookDB.id))

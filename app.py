@@ -6,7 +6,7 @@ from book.data_access_layer import DataAccessLayer
 from db.config import engine, Base, async_session
 from book import routers as book_router
 from docs.docs import tags_metadata
-from book.model.book_model import BookModel
+from book.model.book_model_request import BookModelRequest
 
 
 description = """
@@ -48,7 +48,7 @@ async def startup():
         async with async_session() as session:
             async with session.begin():
                 # create test data
-                test_data = BookModel(
+                test_data = BookModelRequest(
                     name="name",
                     author="author",
                     isbn="isbn",
