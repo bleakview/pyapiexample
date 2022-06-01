@@ -6,7 +6,7 @@ from db.config import Base
 
 class BookDB(Base):
 
-    """Books model for SQLAlchemy"""
+    """Books model for SQLAlchemy DB"""
     __tablename__ = 'books'
 
     id = Column(UUIDType(), primary_key=True, default=uuid.uuid4)
