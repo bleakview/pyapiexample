@@ -13,6 +13,7 @@ def test_app():
 
 
 def test_read_books(test_app):
+    # will we be able to get books
     response = test_app.get(
         "/books",
         headers=jsonheaders,
@@ -29,6 +30,7 @@ def test_read_books(test_app):
 
 
 def test_read_book(test_app):
+    # will we be able able to get book with id
     response = test_app.get(
         "/books/5d596c01-e20b-4049-91e9-a0be77715260",
         headers=jsonheaders,
@@ -43,7 +45,17 @@ def test_read_book(test_app):
     }
 
 
+def test_read_book_404(test_app):
+    # will we be able able to get 404 for id that do not exists
+    response = test_app.get(
+        "/books/5d596c01-e20b-4049-91e9-999999999999",
+        headers=jsonheaders,
+    )
+    assert response.status_code == 404
+
+
 def test_put_book(test_app):
+    # will we be able able to set an existing record
     body = {
         "name": "name test",
         "author": "author test",
@@ -69,7 +81,24 @@ def test_put_book(test_app):
     }
 
 
+def test_put_book_404(test_app):
+    # will we be able able to get 404 for id that do not exists
+    body = {
+        "name": "name test",
+        "author": "author test",
+        "release_year": 1981,
+        "isbn": "isbn test"
+    }
+    response = test_app.put(
+        "/books/5d596c01-e20b-4049-91e9-999999999999",
+        headers=jsonheaders,
+        json=body,
+    )
+    assert response.status_code == 404
+
+
 def test_post_book(test_app):
+    # will we be able able to create a new book
     body = {
         "name": "name test post",
         "author": "author test post",
