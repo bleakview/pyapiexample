@@ -15,6 +15,8 @@ router = APIRouter()
 
 
 @router.post("/books", response_model=BookModelResponse, tags=["post book"])
+# this method is used to create record
+# it used BookModelRequest for entry
 async def create_book(book: BookModelRequest = Body(),
                       book_data_access_layer: DataAccessLayer =
                       Depends(book_data_access_layer)) -> BookModelResponse:
@@ -27,6 +29,9 @@ async def create_book(book: BookModelRequest = Body(),
 
 
 @router.put("/books/{id}", tags=["put book"])
+# this method is used to update record
+# use id to match records
+# it used BookModelRequest for entry
 async def update_book(id: str = Query(description="book id", ),
                       book: BookModelRequest = Body(),
                       book_dal:
@@ -42,6 +47,7 @@ async def update_book(id: str = Query(description="book id", ),
 @router.get("/books",
             response_model=List[BookModelResponse],
             tags=["get books"])
+# this method returns all saved records
 async def get_all_books(book_dal:
                         DataAccessLayer =
                         Depends(book_data_access_layer)) -> List[BookDB]:
@@ -49,6 +55,7 @@ async def get_all_books(book_dal:
 
 
 @router.get("/books/{id}", response_model=BookModelResponse, tags=["get book"])
+# this method gets specific record with given id
 async def get_book(id: str = Query(description="book id", ),
                    book_dal: DataAccessLayer =
                    Depends(book_data_access_layer)) -> BookModelResponse:

@@ -1,7 +1,7 @@
 import os
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import declarative_base, sessionmaker
-
+# DB_CONNECTION_URL is not set use sqlite for database
 DB_CONNECTION_URL = os.getenv(
     "DB_CONNECTION_URL", "sqlite+aiosqlite:///./book.db")
 

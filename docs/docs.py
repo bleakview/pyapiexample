@@ -1,3 +1,4 @@
+# this file is used for swagger documentation
 tags_metadata = [
     {
         "name": "get books",
