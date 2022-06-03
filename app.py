@@ -9,7 +9,7 @@ from book import routers as book_router
 from docs.docs import tags_metadata
 from book.model.book_model_request import BookModelRequest
 
-
+# this is required for swagger documentation
 description = """
 This API handles books operations.
 
@@ -53,6 +53,7 @@ async def startup():
 
 
 async def create_initial_data(session: Session):
+    # create test record
     test_data = BookModelRequest(
         name="name",
         author="author",
